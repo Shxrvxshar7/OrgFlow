@@ -6,3 +6,7 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[submodule "organization-chart"]
+    path = organization-chart
+    url = <repository-url>
