@@ -1,0 +1,35 @@
+{
+  "name": "frontend_assignment",
+  "version": "1.0.0",
+  "description": "Employee Organization Chart Visualization",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "organization-chart",
+    "employee"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "d3-org-chart": "^3.1.1",
+    "miragejs": "^0.1.48",
+    "pretender": "^3.4.7",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
+    "react-organizational-chart": "^2.2.1",
+    "styled-components": "^6.1.15",
+    "vite": "^5.0.12"
+  }
+}
