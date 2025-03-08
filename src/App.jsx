@@ -8,44 +8,42 @@ import { employeeData } from './data/employees';
 
 const AppContainer = styled.div`
   min-height: 100vh;
-  background: #f5f7fa;
+  background: #FDF9F3;
   font-family: 'Montserrat', sans-serif;
 `;
 
 const MainContent = styled.div`
   display: flex;
-  padding: 1.5rem;
-  gap: 1.5rem;
-  height: calc(100vh - 80px);
+  padding: 1rem;
+  gap: 1rem;
+  height: calc(100vh - 64px);
   overflow: hidden;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 0.75rem;
+    gap: 0.75rem;
     height: auto;
     overflow: visible;
   }
 `;
 
 const Sidebar = styled.div`
-  width: 400px;
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 300px;
+  background: transparent;  
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
   overflow-y: auto;
 
   @media (max-width: 768px) {
     width: 100%;
     height: auto;
-    max-height: ${props => props.isExpanded ? '400px' : '60px'};
-    transition: max-height 0.3s ease;
-    position: relative;
+    max-height: ${props => props.isExpanded ? '300px' : '50px'};
   }
 `;
 
@@ -76,7 +74,7 @@ const ToggleButton = styled.button`
 const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 
   @media (max-width: 768px) {
     padding-right: 3rem;
@@ -85,17 +83,15 @@ const SearchContainer = styled.div`
 
 const SearchInput = styled.input`
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   border: 1px solid var(--gray-200);
-  border-radius: var(--radius-md);
+  border-radius: 6px;
   font-size: 0.875rem;
-  color: var(--gray-900);
-  transition: all 0.2s;
-
+  
   &:focus {
     outline: none;
     border-color: var(--accent-blue);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
   }
 
   &::placeholder {
@@ -105,26 +101,23 @@ const SearchInput = styled.input`
 
 const TeamFilter = styled.select`
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   border: 1px solid var(--gray-200);
-  border-radius: var(--radius-md);
+  border-radius: 6px;
   font-size: 0.875rem;
-  color: var(--gray-900);
   background: white;
   cursor: pointer;
-  transition: all 0.2s;
-
+  
   &:focus {
     outline: none;
     border-color: var(--accent-blue);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
   }
 `;
 
 const EmployeeList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex: 1;
   overflow-y: auto;
   padding-right: 0.5rem;
@@ -150,27 +143,23 @@ const EmployeeList = styled.div`
 `;
 
 const EmployeeCard = styled.div`
-  padding: 1rem;
-  background: ${props => props.selected ? 'var(--gray-100)' : 'transparent'};
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all 0.2s;
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: ${props => props.selected ? 'var(--gray-100)' : 'transparent'};
 
   &:hover {
-    background: var(--gray-100);
+    background: var(--gray-50);
   }
-
-  ${props => props.selected && `
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  `}
 `;
 
 const ProfileImage = styled.img`
-  width: ${props => props.size || '48px'};
-  height: ${props => props.size || '48px'};
+  width: ${props => props.size || '36px'};
+  height: ${props => props.size || '36px'};
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid white;
@@ -178,15 +167,13 @@ const ProfileImage = styled.img`
 `;
 
 const EmployeeInfo = styled.div`
-  flex: 1;
-  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.25rem;
 `;
 
 const EmployeeName = styled.div`
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--gray-900);
   white-space: nowrap;
@@ -195,7 +182,7 @@ const EmployeeName = styled.div`
 `;
 
 const EmployeeRole = styled.div`
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: var(--gray-600);
   white-space: nowrap;
   overflow: hidden;
@@ -203,10 +190,11 @@ const EmployeeRole = styled.div`
 `;
 
 const EmployeeTeam = styled.div`
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  color: var(--gray-500);
-  padding: 0.25rem 0.5rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  width: fit-content;
   background: ${props => {
     switch (props.team) {
       case 'Leadership':
@@ -221,16 +209,28 @@ const EmployeeTeam = styled.div`
         return 'rgba(144, 164, 174, 0.1)';
     }
   }};
-  border-radius: 12px;
-  width: fit-content;
+  color: ${props => {
+    switch (props.team) {
+      case 'Leadership':
+        return '#4CAF50';
+      case 'Technology':
+        return '#2196F3';
+      case 'Business':
+        return '#FF9800';
+      case 'Finance':
+        return '#9C27B0';
+      default:
+        return '#90A4AE';
+    }
+  }};
 `;
 
 const ChartContainer = styled.div`
   flex: 1;
-  background: white;
+  background: #FEF9F0;
   border-radius: 12px;
   padding: 0.75rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   overflow: auto;
   position: relative;
   
@@ -261,38 +261,51 @@ const ChartContainer = styled.div`
 `;
 
 const ZoomControls = styled.div`
-  display: none;
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  background: white;
-  border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-
-  @media (max-width: 768px) {
-    display: flex;
-  }
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 1000;
 `;
 
 const ZoomButton = styled.button`
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
   background: white;
-  border: 1px solid var(--gray-200);
-  padding: 0.75rem;
-  cursor: pointer;
-  color: var(--gray-700);
+  color: var(--gray-900);
   font-size: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
 
   &:hover {
-    background: var(--gray-100);
+    background: var(--gray-50);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  &:first-child {
-    border-right: none;
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+`;
+
+const ZoomLevel = styled.div`
+  background: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: var(--gray-900);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 `;
 
 const App = () => {
@@ -303,7 +316,7 @@ const App = () => {
   const [hierarchy, setHierarchy] = useState(null);
   const [toast, setToast] = useState(null);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
-  const [zoom, setZoom] = useState(0.8);
+  const [zoom, setZoom] = useState(1);
 
   useEffect(() => {
     fetchEmployees();
@@ -464,7 +477,10 @@ const App = () => {
   };
 
   const handleZoom = (delta) => {
-    setZoom(prev => Math.max(0.5, Math.min(1.5, prev + delta)));
+    setZoom(prevZoom => {
+      const newZoom = prevZoom + delta;
+      return Math.min(Math.max(newZoom, 0.3), 1.2);
+    });
   };
 
   return (
@@ -509,7 +525,7 @@ const App = () => {
                 <ProfileImage 
                   src={employee.profileUrl || `https://xsgames.co/randomusers/assets/avatars/${employee.gender}/1.jpg`}
                   alt={employee.name}
-                  size="48px"
+                  size="36px"
                 />
                 <EmployeeInfo>
                   <EmployeeName>{employee.name}</EmployeeName>
@@ -531,7 +547,8 @@ const App = () => {
           </DragDropContext>
           <ZoomControls>
             <ZoomButton onClick={() => handleZoom(0.1)} title="Zoom In">+</ZoomButton>
-            <ZoomButton onClick={() => handleZoom(-0.1)} title="Zoom Out">-</ZoomButton>
+            <ZoomLevel title="Current zoom level">{Math.round(zoom * 100)}%</ZoomLevel>
+            <ZoomButton onClick={() => handleZoom(-0.1)} title="Zoom Out">−</ZoomButton>
           </ZoomControls>
         </ChartContainer>
       </MainContent>

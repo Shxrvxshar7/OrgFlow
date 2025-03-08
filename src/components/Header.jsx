@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
-  background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
-  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, #1a237e 0%, #2196F3 100%);
+  padding: 0.5rem 1rem;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  height: 56px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: 'Montserrat', sans-serif;
   position: relative;
   z-index: 10;
@@ -33,23 +35,20 @@ const HeaderContainer = styled.header`
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 0.5rem;
   cursor: pointer;
-  padding-right: 2rem;
+  padding-right: 1rem;
   border-right: 2px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s;
-
-  &:hover {
-    transform: translateX(5px);
-  }
 `;
 
 const LogoText = styled.div`
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   color: white;
-  letter-spacing: -1px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: 'Montserrat', sans-serif;
 
   span {
     opacity: 0.9;
@@ -62,35 +61,28 @@ const TitleContainer = styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.h1`
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: white;
-  margin: 0;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-`;
-
 const Subtitle = styled.p`
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.75rem;
+  opacity: 0.9;
+  font-weight: 400;
   margin: 0.25rem 0 0;
-  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 const ProfileSection = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   position: relative;
 `;
 
 const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  padding: 0.75rem 1.25rem;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -112,31 +104,34 @@ const ProfileInfo = styled.div`
 
 const ProfileName = styled.div`
   color: white;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 0.875rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
 `;
 
 const ProfileRole = styled.div`
   color: rgba(255, 255, 255, 0.8);
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 const ProfileInitials = styled.div`
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   background: linear-gradient(135deg, var(--accent-blue), #1565c0);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
 `;
 
 const ProfileMenu = styled.div`
@@ -240,8 +235,8 @@ const Header = ({ errorMessage }) => {
             org<span>flow</span>
           </LogoText>
           <TitleContainer>
-            <Title>Organization Chart</Title>
-            <Subtitle>Manage your company's structure</Subtitle>
+            <Subtitle>Organization Chart</Subtitle>
+            <Subtitle style={{ fontSize: '0.75rem' }}>Manage your company's structure</Subtitle>
           </TitleContainer>
         </LogoContainer>
         <ProfileSection>

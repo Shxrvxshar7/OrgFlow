@@ -57,14 +57,6 @@ export const employeeData = [
   },
   {
     id: '8',
-    name: 'Alice Lopez',
-    designation: 'Senior Business Analyst',
-    team: 'Business',
-    manager: '7',
-    gender: 'female'
-  },
-  {
-    id: '9',
     name: 'Mary Johnson',
     designation: 'Senior Financial Analyst',
     team: 'Finance',
