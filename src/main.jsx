@@ -4,10 +4,8 @@ import App from './App';
 import './index.css';
 import { makeServer } from './mirage';
 
-// Start the Mirage JS server in development
-if (process.env.NODE_ENV !== 'production') {
-  makeServer();
-}
+// Always enable Mirage JS server for both development and production
+makeServer();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
