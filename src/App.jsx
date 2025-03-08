@@ -4,6 +4,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import Header from './components/Header';
 import OrganizationChart from './components/OrganizationChart';
 import Toast from './components/Toast';
+import { employeeData } from './data/employees';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -316,13 +317,23 @@ const App = () => {
 
   const showToast = (type, title, message) => {
     setToast({ type, title, message });
+    setTimeout(() => setToast(null), 3000);
   };
 
   const fetchEmployees = async () => {
     try {
-      const response = await fetch('/api/employees');
-      const data = await response.json();
-      setEmployees(data.employees);
+      if (process.env.NODE_ENV === 'production') {
+        // In production, use static data
+        setEmployees(employeeData.map(emp => ({
+          ...emp,
+          profileUrl: `https://xsgames.co/randomusers/assets/avatars/${emp.gender}/1.jpg`
+        })));
+      } else {
+        // In development, use MirageJS
+        const response = await fetch('/api/employees');
+        const data = await response.json();
+        setEmployees(data.employees);
+      }
     } catch (error) {
       console.error('Error fetching employees:', error);
       showToast('error', 'Error', 'Failed to fetch employees');
@@ -344,14 +355,8 @@ const App = () => {
     }
 
     try {
-      const response = await fetch(`/api/employees/${draggableId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ manager: newManagerId })
-      });
-
-      if (response.ok) {
-        const updatedEmployee = await response.json();
+      if (process.env.NODE_ENV === 'production') {
+        // In production, update state directly
         const updatedEmployees = employees.map(emp => 
           emp.id === draggableId ? { ...emp, manager: newManagerId, team: newManager.team } : emp
         );
@@ -363,8 +368,28 @@ const App = () => {
           `${draggedEmployee.name} is now reporting to ${newManager.name} in the ${newManager.team} team`
         );
       } else {
-        const error = await response.json();
-        showToast('error', 'Update Failed', error.error);
+        // In development, use MirageJS API
+        const response = await fetch(`/api/employees/${draggableId}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ manager: newManagerId })
+        });
+
+        if (response.ok) {
+          const updatedEmployees = employees.map(emp => 
+            emp.id === draggableId ? { ...emp, manager: newManagerId, team: newManager.team } : emp
+          );
+          setEmployees(updatedEmployees);
+          setHierarchy(buildHierarchy(updatedEmployees));
+          showToast(
+            'success',
+            'Manager Updated',
+            `${draggedEmployee.name} is now reporting to ${newManager.name} in the ${newManager.team} team`
+          );
+        } else {
+          const error = await response.json();
+          showToast('error', 'Update Failed', error.error);
+        }
       }
     } catch (error) {
       console.error('Error updating employee manager:', error);
