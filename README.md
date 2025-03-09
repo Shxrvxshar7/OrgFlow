@@ -8,7 +8,7 @@ An interactive web application for visualizing and managing an employee organiza
 - Search for employees by name, designation, or team
 - Filter employees by team
 - Drag and drop employees to change their manager
-- Interactive UI with a red and orange color palette
+- Interactive UI with a soft pastel palette
 - Responsive design for various screen sizes
 
 ## Technologies Used
